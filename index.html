@@ -3,365 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Doe - Portfolio</title>
+    <title>Jesse Black ∙ Portfolio</title>
     <style>
-        /* Base Styles & Variables */
         :root {
-            --primary-color: #74b9ff;
-            --bg-color: #ffffff;
-            --text-color: #333333;
-            --header-bg: #2d3436;
-            --project-card-bg: #ffffff;
-            --skill-bg: #74b9ff;
-            --transition: all 0.3s ease;
+            --bg: #ffffff;
+            --text: #000000;
+            --primary: #45c75a;
+            --surface: #f5f5f5;
+            --border: #e0e0e0;
         }
 
-        .dark-theme {
-            --primary-color: #0984e3;
-            --bg-color: #1a1a1a;
-            --text-color: #ffffff;
-            --header-bg: #0d0d0d;
-            --project-card-bg: #262626;
-            --skill-bg: #0984e3;
+        .dark-mode {
+            --bg: #000000;
+            --text: #ffffff;
+            --surface: #111111;
+            --border: #333333;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
         body {
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: var(--transition);
+            transition: 0.3s all ease;
         }
 
-        /* Header */
-        header {
-            background: var(--header-bg);
-            color: white;
-            padding: 1rem;
+        .theme-toggle {
             position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
         }
 
         nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 2rem;
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            width: 100%;
+            background: var(--bg);
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+        .hero {
+            padding: 12rem 2rem 6rem;
+            text-align: center;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Sections */
-        section {
-            padding: 5rem 2rem;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Hero Section */
-        #hero {
-            background: #f5f6fa;
-            margin-top: 60px;
-        }
-
-        .dark-theme #hero {
-            background: #121212;
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .hero-text {
-            flex: 1;
-        }
-
-        .hero-text h1 {
-            font-size: 3rem;
+        .hero h1 {
+            font-size: 4rem;
             margin-bottom: 1rem;
+            letter-spacing: -0.05em;
         }
 
-        .profile-img {
-            width: 300px;
-            border-radius: 50%;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        .projects {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* Projects Section */
-        .projects-grid {
+        .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         }
 
         .project-card {
-            background: var(--project-card-bg);
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
+        .skills {
+            padding: 4rem 2rem;
+            text-align: center;
         }
 
-        .project-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-
-        /* Skills Section */
-        .skills-container {
+        .skill-list {
             display: flex;
-            flex-wrap: wrap;
             gap: 1rem;
-            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 800px;
+            margin: 2rem auto;
         }
 
-        .skill {
-            background: var(--skill-bg);
-            color: white;
+        .skill-item {
             padding: 0.5rem 1rem;
-            border-radius: 20px;
+            border: 1px solid var(--border);
+            border-radius: 2rem;
             font-size: 0.9rem;
         }
 
-        /* Contact Section */
-        #contact {
-            background: var(--header-bg);
-            color: white;
+        .contact {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
         }
 
+        /* Contact Form Styles */
         .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 500px;
+            margin: 2rem auto;
         }
 
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        input, textarea {
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-input {
             width: 100%;
-            padding: 0.5rem;
-            margin-top: 0.5rem;
-            border: none;
-            border-radius: 5px;
+            padding: 0.8rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text);
+            transition: 0.2s all ease;
         }
 
-        button {
-            background: var(--primary-color);
-            color: white;
-            padding: 0.8rem 2rem;
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(69, 199, 90, 0.1);
+        }
+
+        .form-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: black;
             border: none;
-            border-radius: 5px;
+            border-radius: 0.5rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
+            transition: 0.2s opacity ease;
         }
 
-        button:hover {
+        .form-button:hover {
             opacity: 0.9;
         }
 
-        /* Theme Toggle */
-        .theme-toggle {
-            position: fixed;
-            right: 2rem;
-            bottom: 2rem;
-            background: var(--primary-color);
-            color: white;
-            padding: 0.8rem;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border: none;
-            transition: var(--transition);
+        .form-status {
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
         }
 
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .nav-links {
-                display: none;
+            .hero h1 {
+                font-size: 2.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    <nav>
+        <h2>Jesse Black</h2>
+    </nav>
 
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">JD</div>
-            <div class="nav-links">
-                <a href="#hero">Home</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
+    <button class="theme-toggle" onclick="toggleTheme()">☀️</button>
+
+    <section class="hero">
+        <h1>Digital Craftsman</h1>
+        <p>Building experiences with precision & purpose</p>
+    </section>
+
+    <section class="projects">
+        <h2>Featured Work</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Secure Messaging Protocol</h3>
+                <p>End-to-end encrypted communication system</p>
             </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Hi, I'm John Doe</h1>
-                    <p>Full Stack Developer & UI Designer</p>
-                    <p>Creating meaningful digital experiences</p>
-                    <button onclick="location.href='#contact'">Get in Touch</button>
-                </div>
-                <img src="profile-placeholder.jpg" alt="John Doe" class="profile-img">
+            <div class="project-card">
+                <h3>AI Resource Optimizer</h3>
+                <p>Machine learning-powered energy management</p>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="project1.jpg" alt="Project 1" class="project-image">
-                    <h3>E-commerce Platform</h3>
-                    <p>Full-stack shopping platform with React and Node.js</p>
-                </div>
-                <div class="project-card">
-                    <img src="project2.jpg" alt="Project 2" class="project-image">
-                    <h3>Task Management App</h3>
-                    <p>Mobile-first productivity tool with real-time sync</p>
-                </div>
-            </div>
+    <section class="skills">
+        <h2>Technical Arsenal</h2>
+        <div class="skill-list">
+            <span class="skill-item">Rust</span>
+            <span class="skill-item">TypeScript</span>
+            <span class="skill-item">Swift</span>
+            <span class="skill-item">Kotlin</span>
+            <span class="skill-item">AWS</span>
+            <span class="skill-item">Kubernetes</span>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <h2>Technical Skills</h2>
-            <div class="skills-container">
-                <span class="skill">JavaScript</span>
-                <span class="skill">React</span>
-                <span class="skill">Node.js</span>
-                <span class="skill">Python</span>
-                <span class="skill">SQL</span>
-                <span class="skill">Git</span>
-                <span class="skill">AWS</span>
-                <span class="skill">Docker</span>
+    <section class="contact">
+        <h2>Contact</h2>
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-input" type="text" id="name" name="name" required>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Me</h2>
-            <form class="contact-form" onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" required>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" required>
-                </div>
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea rows="5" required></textarea>
-                </div>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-input" type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="message">Message</label>
+                <textarea class="form-input" id="message" name="message" rows="4" required></textarea>
+            </div>
+            
+            <button type="submit" class="form-button">Send Message</button>
+            <div class="form-status" id="formStatus"></div>
+        </form>
     </section>
 
     <script>
         // Theme Toggle
         function toggleTheme() {
-            document.body.classList.toggle('dark-theme');
-            const isDark = document.body.classList.contains('dark-theme');
-            localStorage.setItem('darkTheme', isDark);
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            document.querySelector('.theme-toggle').textContent = isDark ? '🌙' : '☀️';
         }
 
-        // Load Saved Theme
-        function loadTheme() {
-            const darkTheme = localStorage.getItem('darkTheme') === 'true';
-            if (darkTheme) document.body.classList.add('dark-theme');
+        // Load saved theme
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.theme-toggle').textContent = '🌙';
+        }
+
+        // Contact Form Handling
+        const form = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
             
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches && 
-               !localStorage.getItem('darkTheme')) {
-                document.body.classList.add('dark-theme');
+            const formData = new FormData(form);
+            const submitButton = form.querySelector('button[type="submit"]');
+            
+            try {
+                submitButton.disabled = true;
+                formStatus.style.display = 'block';
+                formStatus.textContent = 'Sending...';
+                
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                formStatus.textContent = 'Message sent successfully!';
+                formStatus.style.color = 'var(--primary)';
+                form.reset();
+                
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                }, 3000);
+                
+            } catch (error) {
+                formStatus.textContent = 'Error sending message. Please try again.';
+                formStatus.style.color = '#ff4444';
+            } finally {
+                submitButton.disabled = false;
             }
-        }
-
-        // Form Handling
-        function handleSubmit(event) {
-            event.preventDefault();
-            alert('Thank you for your message! I will respond shortly.');
-            event.target.reset();
-        }
-
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
         });
-
-        // Initial Load
-        loadTheme();
     </script>
 </body>
 </html>
